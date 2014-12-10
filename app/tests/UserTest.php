@@ -3,10 +3,19 @@
 
 class UserTest extends TestCase {
 
-	public function testThatTrueIsTrue()
+	public function testFirstNameIsProperlyFormatted()
 	{
-		$this->assertTrue(true);
+
+		$originalName = 'eRiC';
+		$expectedResult = 'Eric';
+
+		$user = new User();
+
+		$result = $user->capitalize($originalName);
+
+		$this->assertEquals($expectedResult, $result);
 	}
-	
+
+
 	
 }
