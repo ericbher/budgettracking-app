@@ -12,6 +12,8 @@ body {
 
 }
 
+
+
 .header {
 	width: 100%;
 	height: 100px;
@@ -42,6 +44,8 @@ body {
 	margin: 0 auto;
 }
 
+
+
 h1 {
 	font-family: 'Coustard', serif;
 	color: #FCEEF7;
@@ -51,6 +55,28 @@ h1 {
 	left: 0;
 	padding-left: 10px;
 	
+}
+
+h2 {
+	font-family: 'Coustard', serif;
+	color: #FCEEF7;
+	font-size: 30px;
+	text-shadow: 2px 1px 7px #000;
+	position: absolute;
+	left: 0;
+	top: 0;
+	margin-left: 10px;
+	margin-top: 15px;
+
+}
+
+h3 {
+	font-family: 'Coustard', serif;
+	color: black;
+	text-align: center;
+	position: relative;
+	top: 20px;
+	background-color: #EDC75F;
 }
 
 #signin {
@@ -97,6 +123,15 @@ h1 {
 
 }
 
+.greeting {
+	font-family: 'Quattrocento Sans', sans-serif;
+	color: #FCEEF7;
+	font-size: 20px;
+	position: relative;
+	text-align: center;
+	line-height: 30px;
+}
+
 input {
 	margin-bottom: 15px;
 	border-radius: 5px;
@@ -106,7 +141,7 @@ input {
 	margin-left: 145px;
 }
 
-#create {
+.create {
 	background-color: transparent;
 	height: 50px;
 	border: none;
@@ -114,4 +149,99 @@ input {
 	font-size: 15px;
 	background-color: #8E2800;
 	box-shadow: 1px 1px 4px #000;
+}
+
+.start {
+	background-color: transparent;
+	padding: 10px;
+	border: none;
+	color: #FCEEF7;
+	font-size: 15px;
+	background-color: #8E2800;
+	box-shadow: 1px 1px 4px #000;
+	border-radius: 5px;
+	position: absolute;
+	left: 223px;
+}
+
+.submission{
+	background-color: transparent;
+	padding: 10px;
+	border: none;
+	color: #FCEEF7;
+	font-size: 15px;
+	background-color: #8E2800;
+	box-shadow: 1px 1px 4px #000;
+	border-radius: 5px;
+}
+
+.error {
+	color: #8E2800;
+	text-align: center;
+	margin: 0;
+	font-family: 'Quattrocento Sans', sans-serif;
+	font-size: 10px;
+}
+
+.navcontainer {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 70px;
+	background-color: #EDC75F;
+	margin: 0;
+	
+}
+
+.main {
+	position: absolute;
+	top: 200px;
+	width: 100%;
+	height: 500px;
+}
+
+.questions {
+	position: relative;
+	height: 350px;
+	width: 600px;
+	background-color: #EFECCA;
+	box-shadow: 1px 1px 4px #000;
+	border-radius: 25px;
+	margin: 0 auto;
+}
+
+#form-views {
+	position: relative;
+	top: 20px;
+	height: 230px;
+	width: 100%;
+}
+
+.buildexplain {
+	text-align: center;
+	padding: 10px;
+	font-family: 'Quattrocento Sans', sans-serif;
+	line-height: 30px;
+}
+
+.amount {
+	width: 150px;
+	height: 40px;
+	font-size: 18px;
+	text-align: right;
+	position: relative;
+	left: 40px;
+
+}
+
+.submission{
+	background-color: transparent;
+	padding: 10px;
+	border: none;
+	color: #FCEEF7;
+	font-size: 15px;
+	background-color: #8E2800;
+	box-shadow: 1px 1px 4px #000;
+	border-radius: 5px;
+	margin-left: 40px;
 }

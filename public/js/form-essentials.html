@@ -1,0 +1,12 @@
+<p class="buildexplain">Let's go over the essentials. <br />Enter the rough amount(if any) that you pay monthly for the following:</p>
+
+	<label for="house">Housing / Rent</label>
+    <input type="text" name="house" ng-model="formData.house">
+
+    <label for="utilities">Utilities</label>
+    <input type="text" name="utilities" ng-model="formData.utilities">
+
+    <label for="food">Food</label>
+    <input type="text" name="food" ng-model="formData.food">
+
+    <a ui-sref="build.necessities"><button type="submit" ng-click="show()" class="submission">Submit</button></a>

@@ -11,12 +11,28 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/', array('uses' => 'HomeController@signUp'));
+Route::post('/', array('uses' => 'HomeController@newUser'));
 
-Route::get('/create', function()
-{
-	return View::make('profile');
-});
+Route::get('deposit',array('uses' => 'HomeController@showDeposit')); 
+Route::post('deposit',array('uses' => 'HomeController@makeDeposit')); 
+
+
+
+Route::get('dashboard', array('uses' => 'HomeController@checkLogin'));
+
+
+
+
+
+
+Route::get('login', array('uses' => 'HomeController@showLogin'));
+Route::post('login', array('uses' => 'HomeController@doLogin'));
+
+Route::get('logout', array('uses' => 'HomeController@doLogout'));
+
+
+
+
+
+
