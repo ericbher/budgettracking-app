@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('/', array('uses' => 'HomeController@signUp'));
 Route::post('/', array('uses' => 'HomeController@newUser'));
 
@@ -20,6 +21,9 @@ Route::post('deposit',array('uses' => 'HomeController@makeDeposit'));
 
 
 Route::get('dashboard', array('uses' => 'HomeController@checkLogin'));
+
+Route::get('withdrawal', array('uses' => 'HomeController@showWithdraw'));
+Route::post('withdrawal', array('uses' => 'HomeController@logExpense'));
 
 
 

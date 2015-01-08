@@ -1,3 +1,193 @@
+body {
+	background-color: #333745;
+}
+
+h1 {
+	color: #DAEDE2;
+	text-align: center;
+	font-family: 'Numans', sans-serif;;
+}
+
 .currency {
 	text-align: right;
 }
+
+p {
+	text-align: center;
+	color: #F6F792;
+}
+
+.error, label {
+	color: white;
+}
+
+
+
+.balancepanel h2 {
+	color: #EA2E49;
+	background-color: #DAEDE2;
+	margin-top: 20px;
+	padding: 10px;
+	border-radius: 4px;
+	margin-right: 20px;
+}
+
+
+
+#summary {
+	color: black;
+}
+
+.welcome {
+    color: #F6F792;
+    text-align: left;
+}
+
+.category {
+	background-color: #DAEDE2;
+	margin-top: 20px;
+	border-radius: 4px;
+	height: 150px;
+	margin-left: auto;
+	margin-right: 60px;
+}
+
+
+.withdrawform {
+	padding-top: 10px;
+}
+
+.needs-btn, .wants-btn, .savings-btn {
+	text-align: center;
+	border-radius: 4px;
+	background-color: #77C4D3;
+	padding: 10px;
+	width: 250px;
+	height: 200px;
+
+	position: relative;
+	margin-right: 20px;
+	
+}
+
+.needs-flipped {
+	text-align: center;
+	border-radius: 4px;
+	background-color: #77C4D3;
+	padding: 10px;
+	width: 250px;
+	height: 200px;
+
+	position: relative;
+
+}
+
+.flipover {
+	cursor: pointer;
+	position: absolute;
+	right: 0;
+	top: 160px;
+}
+
+.description {
+	text-align: center;
+	color: #F6F792;
+	padding: 10px;
+	width: 250px;
+
+}
+
+.back {
+	display: none;
+	background-color: #DAEDE2;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	border-radius: 4px;
+}
+
+.front {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+}
+
+.front:hover{
+	-moz-box-shadow:0px 0px 10px #DAEDE2;
+    -webkit-box-shadow:0px 0px 10px #DAEDE2;
+    box-shadow:0px 0px 10px #DAEDE2;
+}
+
+.transactionpanel {
+	background-color: #77C4D3;
+	height: 500px;
+	margin-top: 20px;
+	border-radius: 4px;
+}
+
+.category-amounts {
+	color: #333745;
+	font-size: 20px;
+}
+
+.needschart .wantschart .savingschart {
+	margin-top: 20px;
+	background-color: white;
+	border-radius: 4px;
+
+}
+
+/*.chart rect {
+	fill: #42D475;
+}*/
+
+.needschart text {
+	fill: white;
+	font: 10px sans-serif;
+	text-anchor: end;
+}
+
+.wantschart text {
+	fill: white;
+	font: 10px sans-serif;
+	text-anchor: end;
+}
+
+.savingschart text {
+	fill: white;
+	font: 10px sans-serif;
+	text-anchor: end;
+}
+
+
+.charts {
+	background-color: white;
+	margin-top: 20px;
+	padding: 10px;
+	border-radius: 4px;
+}
+
+
+}
+
+h4 {
+	color: #426D75;
+}
+
+.graph {
+	color: black;
+	text-align: left;
+}
+
+.divide {
+	color: #42DE75;
+}
+
+
+
+

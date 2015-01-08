@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Budget Tracker</title>
+	<title>Piggy Bank</title>
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
@@ -14,8 +14,48 @@
 	
 </head>
 <body>
+	<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="dashboard">Piggy Bank</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+     
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="login">Sign In</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 	<div class="container">
+		<div class="jumbotron">
+			<h1>Piggy Bank</h1>
+
+			<p id="summary">Welcome to the development version of my app Piggy Bank. Piggy Bank is a budget tracker tool. It utilizes a data-driven
+			visual dashboard interface which will allow you to keep track of your spending habits and uses the 50/30/20 
+			budget allottment rule. Start by creating a profile below.</p>
+
+			
+		</div>
 		<div class="row">
+			<p>
+			@if ($errors->has())
+		
+			@foreach ($errors->all() as $error)
+				{{ $error }}		
+			@endforeach
+		
+			@endif
+			</p>
 			<form role="form" action="/" method="POST">
   				<div class="form-group">
     				<label class="control-label" for="name">Name</label>

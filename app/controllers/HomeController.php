@@ -17,6 +17,7 @@ class HomeController extends BaseController {
 
 	public function showLogin()
 	{
+
 		return View::make('login');
 	}
 
@@ -51,8 +52,23 @@ class HomeController extends BaseController {
 	  if(Auth::check()){
 	    $id = Auth::id();
 	    $name = Auth::user()->name;
-	    $email = Auth::user()->email;	
-		return View::make('dashboard') -> with('name', $name);
+	    $email = Auth::user()->email;
+	    $balance = DB::table('budget') -> where('user_id','=', $id) -> pluck('total');
+	    $needs = DB::table('budget') -> where('user_id','=', $id) -> pluck('needs');
+        $wants = DB::table('budget') -> where('user_id','=', $id) -> pluck('wants');
+        $savings = DB::table('budget') -> where('user_id','=', $id) -> pluck('savings');
+
+        $total = DB::table('data') -> where('user_id','=', $id) -> where ('category', '=', 'Deposit') -> sum('transactions'); 
+        $needstotal = number_format($total * .50, 2);
+        $wantstotal = number_format($total * .30, 2);
+        $savingstotal = number_format($total * .20, 2);
+
+        $needsspent = DB::table('data') -> where('user_id','=', $id) -> where ('category', '=', 'needs') -> sum('transactions'); 
+        $wantsspent = DB::table('data') -> where('user_id','=', $id) -> where ('category', '=', 'wants') -> sum('transactions'); 
+        $savingsspent = DB::table('data') -> where('user_id','=', $id) -> where ('category', '=', 'savings') -> sum('transactions'); 
+
+	    $data = ['name' => $name, 'total' => $balance, 'needs' => $needs, 'wants' => $wants, 'savings' => $savings, 'needstotal' => $needstotal, 'wantstotal' => $wantstotal, 'savingstotal' => $savingstotal, 'needsspent' => $needsspent, 'wantsspent' => $wantsspent, 'savingsspent' => $savingsspent ];
+		return View::make('dashboard', $data);
 	  } else {
 	  	return Redirect::to('/');
 	  }
@@ -61,16 +77,33 @@ class HomeController extends BaseController {
 
 	public function showDeposit()
 	{
+	  if(Auth::check()){
 		return View::make('deposit');
+	  } else {
+	  	return Redirect::to('/');
+	  }
 	}
 
 	public function makeDeposit()
 	{
-		$balance = new Data;
+		$transactions = new Data;
 		$amount = Input::get('deposit');
-		$balance->balance = $amount;
-		$balance->save();
+		$transactions->transactions = $amount;
+		$transactions->category = 'Deposit';
+		$id = Auth::id();
+		$transactions->user_id = $id;
+		$transactions->save();
 
+		$needs = round($amount * .50, 2);
+		$wants = round($amount * .30, 2);
+		$savings = round($amount * .20, 2);
+
+        DB::table('budget') -> where('user_id','=', $id) -> increment('total', $amount);
+        DB::table('budget') -> where('user_id','=', $id) -> increment('needs', $needs);
+        DB::table('budget') -> where('user_id','=', $id) -> increment('wants', $wants);
+        DB::table('budget') -> where('user_id','=', $id) -> increment('savings', $savings);
+
+        
 		return Redirect::to('dashboard');
 	}
 
@@ -80,8 +113,43 @@ class HomeController extends BaseController {
 		return Redirect::to('login'); // redirect the user to the login screen
 	}
 
+	public function showWithdraw()
+	{
+		if(Auth::check()){
+		return View::make('withdraw');
+	  } else {
+	  	return Redirect::to('/');
+	  }
+	}
+
+	public function logExpense()
+	{
+		$transactions = new Data;
+		$amount = Input::get('amount');
+		$description = Input::get('description');
+		$category = Input::get('category');
+		$id = Auth::id();
+
+		$transactions->transactions = $amount;
+		$transactions->category = $category;
+		$transactions->description = $description;
+		$transactions->user_id = $id;
+		$transactions->save();
+
+		DB::table('budget') -> where('user_id','=', $id) -> decrement('total', $amount);
+		DB::table('budget') -> where('user_id','=', $id) -> decrement($category, $amount);
+
+
+		
+
+		return Redirect::to('dashboard');
+
+
+	}
+
 	public function signUp()
 	{
+
 		return View::make('index');
 	}
 
@@ -116,15 +184,26 @@ class HomeController extends BaseController {
 		$user->save();
 
 		$data = new Data;
-		$data->balance = 0.00;
+		$data->transactions = 0.00;
+		$data->category = 'Deposit';
+		$data->description = 'Starting Amount';
 		$data->user_id = $user->id;
 
 		$data->save();	
 
-			$userdata = array(
-					'email' => Input::get('email'),
-					'password' => Input::get('password')
-					);
+		$budget = new Budget;
+		$budget->total = 0.00;
+		$budget->needs = 0.00;
+		$budget->wants = 0.00;
+		$budget->savings = 0.00;
+		$budget->user_id = $user->id;
+
+		$budget->save();
+
+		$userdata = array(
+			'email' => Input::get('email'),
+			'password' => Input::get('password')
+		);
 			if (Auth::attempt($userdata)){
 				return Redirect::to('dashboard');
 			}
